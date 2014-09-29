@@ -16,7 +16,7 @@ main(){
   curl --request GET https://api.github.com/orgs/$1/repos | jq '.[].clone_url' > tmp.txt
   IFS=$'\n'       # make newlines the only separator
   set -f          # disable globbing
-  echo "\\n"
+  echo "\\n"  >> .gitignore
   for i in $(cat "tmp.txt"); do
     tmp=$(echo $i | tr -d '"')
     subtmp=$(echo $tmp | sed -e 's/https:\/\/g\ithub\.com\/theleagueof\///' -e 's/\.\g\it//')
